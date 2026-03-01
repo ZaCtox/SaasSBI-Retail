@@ -26,9 +26,7 @@
 
 ## 🖥️ Demo
 
-![Dashboard Screenshot](docs/dashboard.png)
-![Dashboard Screenshot](docs/dashboard2.png)
-
+[Ver capturas en la carpeta docs](docs/)
 ---
 
 ## 📑 Tabla de contenidos
@@ -215,4 +213,5 @@ Interesado en **Full Stack** & **Data Engineering**
 *Hecho con ☕ para proyectos de BI*
 
 </div>
+
 
