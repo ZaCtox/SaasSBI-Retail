@@ -6,15 +6,6 @@
 
 *Dashboard de Business Intelligence tipo SaaS con arquitectura desacoplada*
 
-## 🛠️ Stack Tecnológico
-
-- PHP 8.2
-- Laravel 11
-- MySQL
-- React 18
-- Axios
-- Chart.js
-
 <br>
 
 [![Laravel](https://img.shields.io/badge/Laravel-11-FF2D20?style=flat-square&logo=laravel)](https://laravel.com)
@@ -23,12 +14,20 @@
 
 </div>
 
+## 🛠️ Stack Tecnológico
+
+- PHP 8.2
+- Laravel 11
+- MySQL
+- React 18
+- Axios
+- Chart.js
 ---
 
 ## 🖥️ Demo
 
 ![Dashboard Screenshot](docs/dashboard.png)
-!![Dashboard Screenshot](docs/dashboard2.png)
+![Dashboard Screenshot](docs/dashboard2.png)
 
 ---
 
@@ -216,3 +215,4 @@ Interesado en **Full Stack** & **Data Engineering**
 *Hecho con ☕ para proyectos de BI*
 
 </div>
+
