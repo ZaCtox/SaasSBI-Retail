@@ -2,45 +2,26 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Services\DashboardService;
 use App\Http\Resources\DashboardResource;
-
 
 class DashboardController extends Controller
 {
-    public function kpis()
+    protected DashboardService $dashboardService;
+
+    public function __construct(DashboardService $dashboardService)
     {
-        $totalSales = DB::table('sales')->sum('revenue');
-        $totalMargin = DB::table('sales')->sum('margin');
+        $this->dashboardService = $dashboardService;
+    }
 
-        $topProducts = DB::table('sales')
-            ->join('products', 'sales.product_id', '=', 'products.id')
-            ->select('products.name', DB::raw('SUM(sales.revenue) as total_revenue'))
-            ->groupBy('products.name')
-            ->orderByDesc('total_revenue')
-            ->limit(5)
-            ->get();
+    public function kpis(Request $request)
+    {
+        $year = $request->query('year');
+        $month = $request->query('month');
 
-        $monthlySales = DB::table('sales')
-            ->join('dates', 'sales.date_id', '=', 'dates.id')
-            ->select(
-                'dates.year',
-                'dates.month',
-                DB::raw('SUM(sales.revenue) as total_sales')
-            )
-            ->groupBy('dates.year', 'dates.month')
-            ->orderBy('dates.year')
-            ->orderBy('dates.month')
-            ->get();
-
-        $data = [
-            'total_sales' => $totalSales,
-            'total_margin' => $totalMargin,
-            'top_products' => $topProducts,
-            'monthly_sales' => $monthlySales
-        ];
+        $data = $this->dashboardService->getKpis($year, $month);
 
         return new DashboardResource($data);
     }
